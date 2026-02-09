@@ -1,0 +1,154 @@
+/*
+ * Simple Todo App - Stylesheet
+ * Implements the visual design and responsive layout for the application.
+ */
+
+/* Root variables for colors, fonts, and spacing */
+:root {
+    /* Colors */
+    --primary-color: #4a90e2;       /* Main accent color */
+    --background-color: #f9fafb;   /* Light page background */
+    --card-background: #ffffff;    /* Container background */
+    --text-color: #333333;         /* Primary text */
+    --border-color: #e0e0e0;       /* Light border */
+    --danger-color: #e74c3c;       /* Delete button */
+
+    /* Font */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-size-base: 16px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+/* Global resets and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: var(--spacing-lg);
+}
+
+/* Todo app container */
+.todo-app {
+    max-width: 600px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todo-app h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Task form layout */
+#task-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+#task-form input {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#task-form button {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+#task-form button:hover {
+    background: #357ab8; /* Slightly darker */
+}
+
+/* Focus outline for accessibility */
+#task-form input:focus,
+#task-form button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Task list styling */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: var(--spacing-sm);
+    transition: opacity 0.2s ease;
+}
+
+.delete-btn:hover {
+    opacity: 0.7;
+}
+
+/* Responsive layout – switch form to row on larger screens */
+@media (min-width: 600px) {
+    #task-form {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    #task-title {
+        flex: 2;
+        margin-right: var(--spacing-sm);
+    }
+
+    #task-due-date {
+        flex: 1;
+        margin-right: var(--spacing-sm);
+    }
+
+    #task-form button {
+        flex: 0;
+        align-self: stretch;
+    }
+}
